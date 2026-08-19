@@ -1,0 +1,1 @@
+$ErrorActionPreference='Stop'; $Root=(Resolve-Path (Join-Path $PSScriptRoot '..')).Path; docker run --rm -v "${Root}/commerce-order-engine-java:/workspace" -w /workspace gradle:8.14-jdk21 gradle wrapper --gradle-version 8.14

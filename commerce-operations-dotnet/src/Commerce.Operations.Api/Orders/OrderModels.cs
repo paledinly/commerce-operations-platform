@@ -1,0 +1,12 @@
+namespace Commerce.Operations.Api.Orders;
+public sealed record CreateOrderItemRequest(long ProductId, long Quantity);
+public sealed record CreateOrderRequest(long CustomerId, IReadOnlyList<CreateOrderItemRequest> Items);
+public sealed record EngineCreateOrderItem(long ProductId,string Sku,string ProductName,decimal UnitPrice,long Quantity);
+public sealed record EngineCreateOrder(long CustomerId,string CustomerEmail,string CustomerName,IReadOnlyList<EngineCreateOrderItem> Items);
+public sealed record OrderItem(long Id,long ProductId,string Sku,string ProductName,decimal UnitPrice,long Quantity,decimal LineAmount);
+public sealed record OrderRecord(long Id,long CustomerId,string CustomerEmail,string CustomerName,string Status,decimal TotalAmount,DateTime CreatedAt,DateTime UpdatedAt,IReadOnlyList<OrderItem> Items);
+public sealed record OrderSummary(long Id,long CustomerId,string CustomerEmail,string CustomerName,string Status,decimal TotalAmount,DateTime CreatedAt,DateTime UpdatedAt);
+public sealed record OrderPage(IReadOnlyList<OrderSummary> Items,int Page,int PageSize,long TotalCount);
+public sealed record PaymentRecord(long Id,long OrderId,string TransactionType,decimal Amount,string Status,string ReferenceNo,DateTime CreatedAt);
+public sealed record ShipOrderRequest(string Carrier,string TrackingNumber);
+public sealed record ShipmentRecord(long Id,long OrderId,string Carrier,string TrackingNumber,string Status,DateTime ShippedAt,DateTime? DeliveredAt);

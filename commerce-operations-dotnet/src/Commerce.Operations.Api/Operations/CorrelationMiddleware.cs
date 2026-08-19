@@ -1,0 +1,3 @@
+using Serilog.Context;
+namespace Commerce.Operations.Api.Operations;
+public sealed class CorrelationMiddleware:IMiddleware{public const string Header="X-Correlation-ID";public async Task InvokeAsync(HttpContext context,RequestDelegate next){var supplied=context.Request.Headers[Header].FirstOrDefault();var id=!string.IsNullOrWhiteSpace(supplied)&&supplied.Length<=64&&supplied.All(c=>char.IsLetterOrDigit(c)||c is '-' or '_' or '.')?supplied:Guid.NewGuid().ToString("N");context.TraceIdentifier=id;context.Response.Headers[Header]=id;using(LogContext.PushProperty("CorrelationId",id))await next(context);}}

@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS service_metadata (
+  service_name VARCHAR(100) PRIMARY KEY,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+

@@ -1,0 +1,1 @@
+. "$PSScriptRoot/common.ps1"; Set-Location "$Root/commerce-operations-dotnet"; Invoke-Step CSharp Test 'dotnet test' { dotnet test }; Set-Location "$Root/commerce-order-engine-java"; Invoke-Step Java Test './gradlew.bat test' { ./gradlew.bat test }; Set-Location "$Root/commerce-operations-react"; Invoke-Step React Test 'npm.cmd run test' { npm.cmd run test }

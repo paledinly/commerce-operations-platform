@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+set -eu
+PROJECT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+exec docker run --rm -v "$PROJECT:/workspace" -w /workspace gradle:8.14-jdk21 gradle --no-daemon "$@"
+

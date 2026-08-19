@@ -1,0 +1,2 @@
+namespace Commerce.Operations.Api.Audit;
+public static class AuditEndpoints{public static IEndpointRouteBuilder MapAuditEndpoints(this IEndpointRouteBuilder endpoints){endpoints.MapGet("/api/audit-logs",async([AsParameters]AuditQuery query,AuditRepository repository)=>query.Page<1||query.PageSize is <1 or >100||query.From>query.To?Results.ValidationProblem(new Dictionary<string,string[]>{{"query",["Invalid audit log query."]}}):Results.Ok(await repository.SearchAsync(query))).RequireAuthorization("AdminOnly").WithTags("Audit");return endpoints;}}

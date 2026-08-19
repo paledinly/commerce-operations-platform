@@ -1,0 +1,2 @@
+. "$PSScriptRoot/common.ps1"; & "$PSScriptRoot/build-all.ps1"; if ($LASTEXITCODE) { exit $LASTEXITCODE }; & "$PSScriptRoot/test-all.ps1"; if ($LASTEXITCODE) { exit $LASTEXITCODE }; Set-Location "$Root/commerce-operations-react"; Invoke-Step React Lint 'npm.cmd run lint' { npm.cmd run lint }; Require-EnvFile; Set-Location $Root; Invoke-Step Docker Config 'docker compose config' { docker compose -f $Compose --env-file $EnvFile config }; Invoke-Step Docker Images 'docker compose build' { docker compose -f $Compose --env-file $EnvFile build }
+

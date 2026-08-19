@@ -1,0 +1,39 @@
+# Local secrets and overrides
+.env.local
+.env.*.local
+
+# .NET build outputs
+**/bin/
+**/obj/
+*.user
+*.suo
+
+# Java and Gradle build outputs
+**/.gradle/
+**/build/
+
+# Node and frontend build outputs
+**/node_modules/
+**/dist/
+**/.vite/
+**/coverage/
+
+# IDE and operating-system files
+.idea/
+.vscode/
+.vs/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Local Docker data or exports
+docker-data/
+exports/
+*.sql.gz
+*.tar
+*.zip

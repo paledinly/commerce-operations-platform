@@ -1,0 +1,1 @@
+. "$PSScriptRoot/common.ps1"; Require-EnvFile; Set-Location $Root; docker compose -f $Compose --env-file $EnvFile up --build -d; if ($LASTEXITCODE) { exit $LASTEXITCODE }; docker compose -f $Compose --env-file $EnvFile ps

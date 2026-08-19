@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  threads.virtual.enabled: true
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/commerce_order_engine}
+    username: ${SPRING_DATASOURCE_USERNAME:order_engine}
+    password: ${SPRING_DATASOURCE_PASSWORD:order-local}
+  data.redis.host: ${REDIS_HOST:localhost}
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    username: ${RABBITMQ_USER:commerce}
+    password: ${RABBITMQ_PASSWORD:commerce-local}
+  batch.jdbc.initialize-schema: never
+management.endpoints.web.exposure.include: health,info
+commerce.internal-api-key: ${INTERNAL_API_KEY:local-internal-api-key-change-me}
+
